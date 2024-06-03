@@ -1,6 +1,6 @@
 <template>
   <div class="footer flx-center">
-    <a href="https://github.com/HalseySpicy" target="_blank"> 2024 © you-want. </a>
+    <a href="https://github.com/HalseySpicy" target="_blank">{{ new Date().getFullYear() }} © YOU-WANT </a>
   </div>
 </template>
 

@@ -3,6 +3,138 @@ export default {
   msg: '成功',
   data: [
     {
+      path: '/user',
+      name: 'user',
+      redirect: '/user/register',
+      meta: {
+        icon: 'List',
+        title: '人员管理',
+        isLink: '',
+        isHide: false,
+        isFull: false,
+        isAffix: false,
+        isKeepAlive: true
+      },
+      children: [
+        {
+          path: '/user/register',
+          name: 'register',
+          component: '/user/register/RegisterIndex',
+          meta: {
+            icon: 'Menu',
+            title: '邀请注册',
+            isLink: '',
+            isHide: false,
+            isFull: false,
+            isAffix: false,
+            isKeepAlive: true
+          }
+        },
+        {
+          path: '/menu/menu2',
+          name: 'menu2',
+          redirect: '/menu/menu2/menu21',
+          meta: {
+            icon: 'Menu',
+            title: '菜单2',
+            isLink: '',
+            isHide: false,
+            isFull: false,
+            isAffix: false,
+            isKeepAlive: true
+          },
+          children: [
+            {
+              path: '/menu/menu2/menu21',
+              name: 'menu21',
+              component: '/menu/menu2/menu21/index',
+              meta: {
+                icon: 'Menu',
+                title: '菜单2-1',
+                isLink: '',
+                isHide: false,
+                isFull: false,
+                isAffix: false,
+                isKeepAlive: true
+              }
+            },
+            {
+              path: '/menu/menu2/menu22',
+              name: 'menu22',
+              redirect: '/menu/menu2/menu22/menu221',
+              meta: {
+                icon: 'Menu',
+                title: '菜单2-2',
+                isLink: '',
+                isHide: false,
+                isFull: false,
+                isAffix: false,
+                isKeepAlive: true
+              },
+              children: [
+                {
+                  path: '/menu/menu2/menu22/menu221',
+                  name: 'menu221',
+                  component: '/menu/menu2/menu22/menu221/index',
+                  meta: {
+                    icon: 'Menu',
+                    title: '菜单2-2-1',
+                    isLink: '',
+                    isHide: false,
+                    isFull: false,
+                    isAffix: false,
+                    isKeepAlive: true
+                  }
+                },
+                {
+                  path: '/menu/menu2/menu22/menu222',
+                  name: 'menu222',
+                  component: '/menu/menu2/menu22/menu222/index',
+                  meta: {
+                    icon: 'Menu',
+                    title: '菜单2-2-2',
+                    isLink: '',
+                    isHide: false,
+                    isFull: false,
+                    isAffix: false,
+                    isKeepAlive: true
+                  }
+                }
+              ]
+            },
+            {
+              path: '/menu/menu2/menu23',
+              name: 'menu23',
+              component: '/menu/menu2/menu23/index',
+              meta: {
+                icon: 'Menu',
+                title: '菜单2-3',
+                isLink: '',
+                isHide: false,
+                isFull: false,
+                isAffix: false,
+                isKeepAlive: true
+              }
+            }
+          ]
+        },
+        {
+          path: '/menu/menu3',
+          name: 'menu3',
+          component: '/menu/menu3/index',
+          meta: {
+            icon: 'Menu',
+            title: '菜单3',
+            isLink: '',
+            isHide: false,
+            isFull: false,
+            isAffix: false,
+            isKeepAlive: true
+          }
+        }
+      ]
+    },
+    {
       path: '/home/index',
       name: 'home',
       component: '/HomeView',
@@ -1014,9 +1146,9 @@ export default {
       ]
     },
     {
-      path: '/about/index',
+      path: '/about',
       name: 'about',
-      component: '/about/index',
+      component: '/AboutView',
       meta: {
         icon: 'InfoFilled',
         title: '关于项目',

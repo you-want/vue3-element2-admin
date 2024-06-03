@@ -73,7 +73,7 @@
     </el-table>
     <!-- 分页组件 -->
     <slot name="pagination">
-      <Pagination v-if="pagination" :pageable="pageable" :handle-size-change="handleSizeChange"
+      <PaginationIndex v-if="pagination" :pageable="pageable" :handle-size-change="handleSizeChange"
         :handle-current-change="handleCurrentChange" />
     </slot>
   </div>
@@ -82,16 +82,12 @@
 </template>
 
 <script setup lang="ts" name="ProTable">
-import { ref, watch, provide, onMounted, unref, computed, reactive } from "vue";
-import { ElTable } from "element-plus";
 import { useTable } from "@/hooks/useTable";
 import { useSelection } from "@/hooks/useSelection";
-import { BreakPoint } from "@/components/Grid/interface";
-import { ColumnProps, TypeProps } from "@/components/ProTable/interface";
+import type { BreakPoint } from "@/components/Grid/interface";
+import type { ColumnProps, TypeProps } from "@/components/ProTable/interface";
 import { Refresh, Operation, Search } from "@element-plus/icons-vue";
 import { handleProp } from "@/utils";
-import SearchForm from "@/components/SearchForm/index.vue";
-import Pagination from "./components/PaginationIndex.vue";
 import ColSetting from "./components/ColSetting.vue";
 import TableColumn from "./components/TableColumn.vue";
 import Sortable from "sortablejs";
