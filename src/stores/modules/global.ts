@@ -7,7 +7,7 @@ export const useGlobalStore = defineStore('global', {
   // 修改默认值之后，需清除 localStorage 数据
   state: (): GlobalState => ({
     // 布局模式 (纵向：vertical | 经典：classic | 横向：transverse | 分栏：columns)
-    layout: 'vertical',
+    layout: 'classic',
     // element 组件大小
     assemblySize: 'default',
     // 当前系统语言
