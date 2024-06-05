@@ -1,5 +1,5 @@
 import { isArray } from '@/utils/is'
-import type { FieldNamesProps } from '@/components/ProTable/interface'
+import type { FieldNamesProps } from '@/components/TablePro/interface'
 
 const mode = import.meta.env.VITE_ROUTER_MODE
 
@@ -259,7 +259,7 @@ export function formatTableColumn(row: number, col: number, callValue: any) {
 }
 
 /**
- * @description 处理 ProTable 值为数组 || 无数据
+ * @description 处理 TablePro 值为数组 || 无数据
  * @param {*} callValue 需要处理的值
  * @returns {String}
  * */

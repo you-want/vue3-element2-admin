@@ -90,7 +90,6 @@ export const useTheme = () => {
     if (headerInverted.value) type = 'inverted'
     if (isDark.value) type = 'dark'
     const theme = headerTheme[type!]
-    console.log(11111, headerTheme, theme, type)
     for (const [key, value] of Object.entries(theme)) {
       document.documentElement.style.setProperty(key, value)
     }

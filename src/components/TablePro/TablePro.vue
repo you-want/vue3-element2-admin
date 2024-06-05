@@ -1,5 +1,3 @@
-<!-- 📚📚📚 Pro-Table 文档: https://juejin.cn/post/7166068828202336263 -->
-
 <template>
   <!-- 查询表单 -->
   <SearchForm v-show="isShowSearch" :search="_search" :reset="_reset" :columns="searchColumns"
@@ -81,18 +79,18 @@
   <ColSetting v-if="toolButton" ref="colRef" v-model:col-setting="colSetting" />
 </template>
 
-<script setup lang="ts" name="ProTable">
+<script setup lang="ts" name="TablePro">
 import { useTable } from "@/hooks/useTable";
 import { useSelection } from "@/hooks/useSelection";
 import type { BreakPoint } from "@/components/Grid/interface";
-import type { ColumnProps, TypeProps } from "@/components/ProTable/interface";
+import type { ColumnProps, TypeProps } from "@/components/TablePro/interface";
 import { Refresh, Operation, Search } from "@element-plus/icons-vue";
 import { handleProp } from "@/utils";
 import ColSetting from "./components/ColSetting.vue";
 import TableColumn from "./components/TableColumn.vue";
 import Sortable from "sortablejs";
 
-export interface ProTableProps {
+export interface TableProProps {
   columns: ColumnProps[]; // 列配置项  ==> 必传
   data?: any[]; // 静态 table data 数据，若存在则不会使用 requestApi 返回的 data ==> 非必传
   requestApi?: (params: any) => Promise<any>; // 请求表格数据的 api ==> 非必传
@@ -109,7 +107,7 @@ export interface ProTableProps {
 }
 
 // 接受父组件参数，配置默认值
-const props = withDefaults(defineProps<ProTableProps>(), {
+const props = withDefaults(defineProps<TableProProps>(), {
   columns: () => [],
   requestAuto: true,
   pagination: true,

@@ -7,7 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    ColSetting: typeof import('./../components/ProTable/components/ColSetting.vue')['default']
+    ColSetting: typeof import('./../components/TablePro/components/ColSetting.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAutocomplete: typeof import('element-plus/es')['ElAutocomplete']
     ElBadge: typeof import('element-plus/es')['ElBadge']
@@ -61,14 +61,14 @@ declare module 'vue' {
     IconSupport: typeof import('./../components/icons/IconSupport.vue')['default']
     IconTooling: typeof import('./../components/icons/IconTooling.vue')['default']
     LoadingIndex: typeof import('./../components/Loading/LoadingIndex.vue')['default']
-    PaginationIndex: typeof import('./../components/ProTable/components/PaginationIndex.vue')['default']
-    ProTable: typeof import('./../components/ProTable/ProTable.vue')['default']
+    PaginationIndex: typeof import('./../components/TablePro/components/PaginationIndex.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchForm: typeof import('./../components/SearchForm/SearchForm.vue')['default']
     SearchFormItem: typeof import('./../components/SearchForm/components/SearchFormItem.vue')['default']
     SwitchDark: typeof import('./../components/SwitchDark/SwitchDark.vue')['default']
-    TableColumn: typeof import('./../components/ProTable/components/TableColumn.vue')['default']
+    TableColumn: typeof import('./../components/TablePro/components/TableColumn.vue')['default']
+    TablePro: typeof import('./../components/TablePro/TablePro.vue')['default']
     TheWelcome: typeof import('./../components/TheWelcome.vue')['default']
     WelcomeItem: typeof import('./../components/WelcomeItem.vue')['default']
   }

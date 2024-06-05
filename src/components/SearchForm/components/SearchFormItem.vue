@@ -17,7 +17,7 @@
 
 <script setup lang="ts" name="SearchFormItem">
 import { handleProp } from "@/utils";
-import type { ColumnProps } from "@/components/ProTable/interface";
+import type { ColumnProps } from "@/components/TablePro/interface";
 
 interface SearchFormItem {
   column: ColumnProps;

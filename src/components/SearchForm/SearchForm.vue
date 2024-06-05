@@ -33,11 +33,11 @@
   </div>
 </template>
 <script setup lang="ts" name="SearchForm">
-import type { ColumnProps } from "@/components/ProTable/interface";
+import type { ColumnProps } from "@/components/TablePro/interface";
 import type { BreakPoint } from "@/components/Grid/interface";
 import { Delete, Search, ArrowDown, ArrowUp } from "@element-plus/icons-vue";
 
-interface ProTableProps {
+interface TableProProps {
   columns?: ColumnProps[]; // 搜索配置列
   searchParam?: { [key: string]: any }; // 搜索参数
   searchCol: number | Record<BreakPoint, number>;
@@ -46,7 +46,7 @@ interface ProTableProps {
 }
 
 // 默认值
-const props = withDefaults(defineProps<ProTableProps>(), {
+const props = withDefaults(defineProps<TableProProps>(), {
   columns: () => [],
   searchParam: () => ({})
 });
