@@ -80,15 +80,17 @@
 </template>
 
 <script setup lang="ts" name="TablePro">
+import { ElTable } from "element-plus";
+import { Refresh, Operation, Search } from "@element-plus/icons-vue";
+import Sortable from "sortablejs";
+
 import { useTable } from "@/hooks/useTable";
 import { useSelection } from "@/hooks/useSelection";
 import type { BreakPoint } from "@/components/Grid/interface";
 import type { ColumnProps, TypeProps } from "@/components/TablePro/interface";
-import { Refresh, Operation, Search } from "@element-plus/icons-vue";
 import { handleProp } from "@/utils";
 import ColSetting from "./components/ColSetting.vue";
 import TableColumn from "./components/TableColumn.vue";
-import Sortable from "sortablejs";
 
 export interface TableProProps {
   columns: ColumnProps[]; // 列配置项  ==> 必传

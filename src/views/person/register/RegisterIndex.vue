@@ -31,33 +31,23 @@
       </template>
       <!-- 表格操作 -->
       <template #operation="scope">
-        <el-button type="primary" link :icon="EditPen" @click="openDrawer('编辑', scope.row)">编辑</el-button>
-        <el-button type="primary" link :icon="Refresh" @click="resetPass(scope.row)">关闭链接</el-button>
+        <el-button type="primary" link :icon="EditPen">编辑</el-button>
+        <el-button type="primary" link :icon="Refresh">关闭链接</el-button>
       </template>
     </TablePro>
   </div>
 </template>
 
 <script setup lang="tsx" name="useTablePro">
+import { ElMessage, ElMessageBox } from "element-plus";
+import { CirclePlus, Delete, EditPen, Download, Upload, View, Refresh } from "@element-plus/icons-vue";
+
 import type { User } from "@/api/interface";
 import { useHandleData } from "@/hooks/useHandleData";
 import { useDownload } from "@/hooks/useDownload";
 import { useAuthButtons } from "@/hooks/useAuthButtons";
-import { ElMessage, ElMessageBox } from "element-plus";
 import type { TableProInstance, ColumnProps, HeaderRenderScope } from "@/components/TablePro/interface";
-import { CirclePlus, Delete, EditPen, Download, Upload, View, Refresh } from "@element-plus/icons-vue";
-import {
-  getUserList,
-  deleteUser,
-  editUser,
-  addUser,
-  changeUserStatus,
-  resetUserPassWord,
-  exportUserInfo,
-  BatchAddUser,
-  getUserStatus,
-  getUserGender
-} from "@/api/modules/user";
+import { getUserList } from "@/api/modules/user";
 
 const router = useRouter();
 
@@ -93,18 +83,6 @@ const getTableList = (params: any) => {
   return getUserList(newParams);
 };
 
-// 页面按钮权限（按钮权限既可以使用 hooks，也可以直接使用 v-auth 指令，指令适合直接绑定在按钮上，hooks 适合根据按钮权限显示不同的内容）
-const { BUTTONS } = useAuthButtons();
-
-// 自定义渲染表头（使用tsx语法）
-const headerRender = (scope: HeaderRenderScope<User.ResUserList>) => {
-  return (
-    <el-button type="primary" onClick={() => ElMessage.success("我是通过 tsx 语法渲染的表头")}>
-      {scope.column.label}
-    </el-button>
-  );
-};
-
 // 表格配置项
 const columns = reactive<ColumnProps<User.ResUserList>[]>([
   { type: "sort", label: "排序", width: 80 },
@@ -117,7 +95,7 @@ const columns = reactive<ColumnProps<User.ResUserList>[]>([
   { type: "expand", label: "关联方角色", },
   { type: "expand", label: "邀请链接", },
   { type: "expand", label: "状态", search: { el: "select" }, },
-  { prop: "operation", label: "操作", fixed: "right", width: 330 }
+  { prop: "action", label: "操作", fixed: "right", width: 230 }
 ]);
 
 // 表格拖拽排序
@@ -125,62 +103,5 @@ const sortTable = ({ newIndex, oldIndex }: { newIndex?: number; oldIndex?: numbe
   console.log(newIndex, oldIndex);
   console.log(proTable.value?.tableData);
   ElMessage.success("修改列表排序成功");
-};
-
-// 删除用户信息
-const deleteAccount = async (params: User.ResUserList) => {
-  await useHandleData(deleteUser, { id: [params.id] }, `删除【${params.username}】用户`);
-  proTable.value?.getTableList();
-};
-
-// 批量删除用户信息
-const batchDelete = async (id: string[]) => {
-  await useHandleData(deleteUser, { id }, "删除所选用户信息");
-  proTable.value?.clearSelection();
-  proTable.value?.getTableList();
-};
-
-// 重置用户密码
-const resetPass = async (params: User.ResUserList) => {
-  await useHandleData(resetUserPassWord, { id: params.id }, `重置【${params.username}】用户密码`);
-  proTable.value?.getTableList();
-};
-
-// 切换用户状态
-const changeStatus = async (row: User.ResUserList) => {
-  await useHandleData(changeUserStatus, { id: row.id, status: row.status == 1 ? 0 : 1 }, `切换【${row.username}】用户状态`);
-  proTable.value?.getTableList();
-};
-
-// 导出用户列表
-const downloadFile = async () => {
-  ElMessageBox.confirm("确认导出用户数据?", "温馨提示", { type: "warning" }).then(() =>
-    useDownload(exportUserInfo, "用户列表", proTable.value?.searchParam)
-  );
-};
-
-// 批量添加用户
-const dialogRef = ref<InstanceType<typeof ImportExcel> | null>(null);
-const batchAdd = () => {
-  const params = {
-    title: "用户",
-    tempApi: exportUserInfo,
-    importApi: BatchAddUser,
-    getTableList: proTable.value?.getTableList
-  };
-  dialogRef.value?.acceptParams(params);
-};
-
-// 打开 drawer(新增、查看、编辑)
-const drawerRef = ref<InstanceType<typeof UserDrawer> | null>(null);
-const openDrawer = (title: string, row: Partial<User.ResUserList> = {}) => {
-  const params = {
-    title,
-    isView: title === "查看",
-    row: { ...row },
-    api: title === "新增" ? addUser : title === "编辑" ? editUser : undefined,
-    getTableList: proTable.value?.getTableList
-  };
-  drawerRef.value?.acceptParams(params);
 };
 </script>

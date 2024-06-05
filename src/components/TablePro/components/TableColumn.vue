@@ -34,7 +34,7 @@ const RenderTableColumn = (item: ColumnProps) => {
         <el-table-column
           {...item}
           align={item.align ?? "center"}
-          showOverflowTooltip={item.showOverflowTooltip ?? item.prop !== "operation"}
+          showOverflowTooltip={item.showOverflowTooltip ?? item.prop !== "action"}
         >
           {{
             default: (scope: RenderScope<any>) => {
