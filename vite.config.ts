@@ -37,11 +37,7 @@ export default defineConfig({
       dirs: ['src/components'],
       extensions: ['vue'],
       include: [/\.vue$/, /\.vue\?vue/],
-      resolvers: [
-        ElementPlusResolver({
-          importStyle: false // css in js
-        })
-      ],
+      resolvers: [ElementPlusResolver()],
       dts: 'src/types/components.d.ts'
     }),
     UnoCSS(),

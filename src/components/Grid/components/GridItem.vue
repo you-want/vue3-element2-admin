@@ -4,8 +4,8 @@
   </div>
 </template>
 <script setup lang="ts" name="GridItem">
-import { computed, inject, Ref, ref, useAttrs, watch } from "vue";
-import { BreakPoint, Responsive } from "../interface/index";
+import type { Ref } from "vue";
+import type { BreakPoint, Responsive } from "../interface/index";
 
 type Props = {
   offset?: number;
@@ -38,7 +38,7 @@ const shouldHiddenIndex = inject<Ref<number>>("shouldHiddenIndex", ref(-1));
 watch(
   () => [shouldHiddenIndex.value, breakPoint.value],
   n => {
-    if (!!attrs.index) {
+    if (attrs.index) {
       isShow.value = !(n[0] !== -1 && parseInt(attrs.index) >= Number(n[0]));
     }
   },
@@ -58,9 +58,8 @@ const style = computed(() => {
     };
   } else {
     return {
-      gridColumn: `span ${span + offset > cols.value ? cols.value : span + offset}/span ${
-        span + offset > cols.value ? cols.value : span + offset
-      }`,
+      gridColumn: `span ${span + offset > cols.value ? cols.value : span + offset}/span ${span + offset > cols.value ? cols.value : span + offset
+        }`,
       marginLeft: offset !== 0 ? `calc(((100% + ${gap}px) / ${span + offset}) * ${offset})` : "unset"
     };
   }

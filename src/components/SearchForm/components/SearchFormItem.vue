@@ -1,5 +1,5 @@
 <template>
-  <component :is="column.search?.render ?? `el-${column.search?.el}`"
+  <component :is="column.search?.render ?? `el-input`"
     v-bind="{ ...handleSearchProps, ...placeholder, searchParam: _searchParam, clearable }"
     v-model.trim="_searchParam[column.search?.key ?? handleProp(column.prop!)]"
     :data="column.search?.el === 'tree-select' ? columnEnum : []"
@@ -18,6 +18,7 @@
 <script setup lang="ts" name="SearchFormItem">
 import { handleProp } from "@/utils";
 import type { ColumnProps } from "@/components/TablePro/interface";
+import { ElInput } from "element-plus";
 
 interface SearchFormItem {
   column: ColumnProps;
